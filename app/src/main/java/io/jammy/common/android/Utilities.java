@@ -2,14 +2,19 @@ package io.jammy.common.android;
 
 
 
-/**
- * Instrumentation test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
+import android.content.res.Resources;
+
+
+
 public class Utilities {
 
-  public Utilities() {
+  public static int pxToDp(int px) {
 
+    return (int) (px / Resources.getSystem().getDisplayMetrics().density);
+  }
+
+  public static int dpToPx(int dp) {
+
+    return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
   }
 }
