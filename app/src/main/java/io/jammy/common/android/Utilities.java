@@ -50,16 +50,23 @@ public class Utilities {
    *
    * Todo - Look into pre-21 options
    *
-   * @param window  Window instance returned from calling getWindow() within the calling context
-   * @throws IllegalArgumentException
+   * @param window Window instance returned from calling getWindow() within the calling context
    */
   public static void hideStatusBarCompat(Window window) throws IllegalArgumentException {
     if (window != null) {
+
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.BLACK);
       }
+
+      // If the Android version is lower than Jellybean, use this call to hide
+      // the status bar.
+      if (Build.VERSION.SDK_INT < 16) {
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      }
+
     } else {
       throw new IllegalArgumentException("Window must not be null");
     }
