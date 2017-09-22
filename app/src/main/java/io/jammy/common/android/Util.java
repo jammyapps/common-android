@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class Utilities {
+public class Util {
 
   public static int pxToDp(int px) {
 
@@ -39,7 +39,8 @@ public class Utilities {
 
       return new String(buffer);
 
-    } catch (IOException e) {
+    }
+    catch (IOException e) {
 
       throw new RuntimeException(e);
     }
@@ -47,7 +48,7 @@ public class Utilities {
 
   /**
    * Lollipop and later mechanism to hide status bar.
-   *
+   * <p>
    * Todo - Look into pre-21 options
    *
    * @param window Window instance returned from calling getWindow() within the calling context
@@ -67,7 +68,8 @@ public class Utilities {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
       }
 
-    } else {
+    }
+    else {
       throw new IllegalArgumentException("Window must not be null");
     }
   }
