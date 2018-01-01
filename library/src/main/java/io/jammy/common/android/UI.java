@@ -1,7 +1,12 @@
 package io.jammy.common.android;
 
+import static io.jammy.common.android.Util.versionAtLeast;
+
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -24,6 +29,18 @@ public class UI {
       if (imm != null) {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
       }
+    }
+  }
+
+  @TargetApi (Build.VERSION_CODES.JELLY_BEAN)
+  @SuppressWarnings ("deprecation")
+  public static void setViewBackground(View view, Drawable drawable) {
+
+    if (versionAtLeast(Build.VERSION_CODES.JELLY_BEAN)) {
+      view.setBackground(drawable);
+    }
+    else {
+      view.setBackgroundDrawable(drawable);
     }
   }
 }
