@@ -13,6 +13,11 @@ import java.io.InputStream;
 
 public class Util {
 
+  public static boolean versionAtLeast(int version) {
+
+    return Build.VERSION.SDK_INT >= version;
+  }
+
   public static int pxToDp(int px) {
 
     return (int) (px / Resources.getSystem().getDisplayMetrics().density);
